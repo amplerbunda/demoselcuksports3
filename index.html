@@ -79,8 +79,9 @@
 <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
 <script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
 <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
 
-
+	
   <title>SelcukSportsHD Kalitenin Giriş Adresi • 👑 SelcukSports Giriş | Selçuk Spor, SelçukSports, SelcukSportsHD izle</title>
 <link href="/images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <meta name="description" content="Selçuk Sports, spor taraftarına canlı maç yayınları yapan sitedir. SelcukSports HD kalitesini bedava maç izleme imkanı sunan yayıncıdır. Selcuk Sports, maç yayınlarında kalitenin nirvanasını yaşayın."/>
@@ -133,6 +134,26 @@
 		right:0;
 		z-index:99
 	}
+	    .splashAd {
+            position: fixed;
+            top: 10%; /* İlk reklamın konumu */
+            left: 50%;
+            transform: translate(-50%, -10%);
+            z-index: 1000;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            display: block;
+        }
+
+        .splashAdHidden {
+            display: none;
+        }
+
+        .secondAd {
+            top: 60%; /* İkinci reklamın konumu */
+        }
 	.logo-container .logo {
 		width:calc(30px*120/25);
 		display:block
@@ -558,7 +579,19 @@ padding-right: 10px;
 </head>
 <body>
     <amp-sidebar class="site-menu" id="site-menu" layout="nodisplay" side="right">
+	    
+<amp-state id="firstAdVisible">
+        <script type="application/json">
+            true
+        </script>
+    </amp-state>
 
+    <amp-state id="secondAdVisible">
+        <script type="application/json">
+            true
+        </script>
+    </amp-state>
+	    
 <ul>
     <li>
         <a href="/">
@@ -603,7 +636,23 @@ padding-right: 10px;
 
  <amp-iframe allowfullscreen="" allowtransparency="" frameborder="0" height="300" scrolling="no" src="https://fram8.pages.dev/channel?id=yayinstar" width="auto" layout="fixed-height" sandbox="allow-downloads allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation" style="height:300px"><span placeholder="" class="amp-wp-iframe-placeholder"></span><noscript><iframe name="ekrani" frameborder="0" height="300" scrolling="no" src="https://fram8.pages.dev/channel?id=yayinstar" width="100%"></iframe></noscript></amp-iframe>
     <div class="sportrgoolmenu">⚽️ Günün Canlı Maçları ↓</div>
-        
+
+ <!-- İlk Reklam -->
+    <div id="firstSplashAd" class="splashAd" [class]="firstAdVisible ? 'splashAd' : 'splashAdHidden'">
+        <a href="https://bit.ly/TIKLAGIR" target="_blank">
+            <img src="/xxsss.jpg" alt="Reklam">
+        </a>
+        <button on="tap:AMP.setState({ firstAdVisible: false })">Kapat</button>
+    </div>
+
+    <!-- İkinci Reklam -->
+    <div id="secondSplashAd" class="splashAd secondAd" [class]="secondAdVisible ? 'splashAd secondAd' : 'splashAdHidden'">
+        <a href="https://bit.ly/TIKLAGIR" target="_blank">
+            <img src="/xxsss.jpg" alt="Reklam">
+        </a>
+        <button on="tap:AMP.setState({ secondAdVisible: false })">Kapat</button>
+    </div>
+	    
 #akisbaslangic
 <a href="/yayinstar.html">
             <div class="sportrgool">
